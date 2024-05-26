@@ -1,0 +1,97 @@
+.title_page {
+    margin-top:60px;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+.background_login_admin {
+    background: linear-gradient(180deg, #f36373, rgb(233, 233, 233));
+    width: 80%;
+    height: 100%;
+}
+.background_form {
+   border-radius: 8px;
+    background-color: white;
+    width: 90%;
+    height: 100%;
+    margin-top: 20px; 
+    margin-bottom:80px;
+}
+
+.buttonloginadmin {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 90%;
+    margin-bottom: 80px;
+}
+
+.logo-title-container {
+    display: flex;
+    align-items: center; /* Canh chỉnh các phần tử trong container theo chiều dọc */
+    justify-content: center;
+}
+.logo {
+    margin-right: 10px; /* Để tạo khoảng cách giữa hình ảnh và tiêu đề */
+}
+
+.custom-align-center {
+    display: flex;
+    justify-content: center;
+}
+.form-control {
+    background-color: rgb(210, 210, 210);
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 0px;
+}
+
+.option_login_logout {
+    color:white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom:0;
+    padding-right:25px;
+}
+
+.cate_option {
+    color: white;
+    
+}
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn.dropdown-toggle-split:first-child, .btn-group > .btn-group:not(:last-child) > .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 6px;
+    border-radius: 5px;
+}
+.btn-group > :not(.btn-check:first-child) + .btn, .btn-group > .btn-group:not(:first-child) {
+    margin-left: calc(var(--bs-border-width) * -1);
+    border-radius: 5px;
+}
+
+.button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+
+.col-md-12 {
+    flex: 0 0 auto;
+    width: 100%;
+    height:max-content; /* Nếu nội dung vượt quá chiều cao của màn hình */
+}
+
+.py-4 {
+    padding-top: 0px !important;
+}
+.selected {
+    background-color: white;
+}
+
+.navbar-vertical .navbar-brand>img, .navbar-vertical .navbar-brand-img {
+    max-width: 100%;
+    /* max-height: 2rem; */
+}
+
+
+
+
+
+
+
