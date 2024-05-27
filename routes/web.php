@@ -50,6 +50,7 @@ Route::post('/login_admin', [AdminController::class, 'login_admin'])->name('logi
 Route::get('/logout_admin', [AdminController::class, 'logout_admin'])->name('logout_admin');
 
 
+
 Route::middleware(['AuthenticateAdmin'])->group(function () {
     Route::get('/home_admin_new', [AdminController::class, 'return_back_home_admin_new'])->name('home_admin_new');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
@@ -60,7 +61,11 @@ Route::middleware(['AuthenticateAdmin'])->group(function () {
     Route::post('store-admin', [AdminController::class, 'store'])->name('admin.store');
 
     // Statistical
-    Route::get('/statistical', [AdminController::class, 'statistical'])->name('statistical.index');
+// routes/web.php
+Route::get('/statistics/daily-revenue', [AdminController::class, 'getDailyRevenue']);
+Route::get('/statistics/monthly-revenue', [AdminController::class, 'getMonthlyRevenue']);
+Route::get('/statistics/most-booked-pitches', [AdminController::class, 'getMostBookedPitches']);
+Route::get('/statistics', [AdminController::class, 'showStatistics'])->name('statistical.index');
 
     // CUSTOMER MANAGER
     Route::get('/customer', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customer.index');

@@ -216,5 +216,5 @@ class SchedulingFromController extends Controller
     
         return Redirect::route('scheduling_form.index')->with('msg', 'Delete Successful');
     }
-    
+
 }

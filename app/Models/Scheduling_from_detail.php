@@ -15,4 +15,16 @@ class Scheduling_from_detail extends Model
     {
         return $this->belongsTo(Time_frame::class, 'time_id');
     }
+    protected $primaryKey = ['scheduling_form_id', 'pitch_id', 'time_id'];
+    public $incrementing = false;
+
+    public function form()
+    {
+        return $this->belongsTo(Scheduling_from::class, 'scheduling_form_id');
+    }
+
+    public function pitch()
+    {
+        return $this->belongsTo(Pitch::class, 'pitch_id');
+    }
 }

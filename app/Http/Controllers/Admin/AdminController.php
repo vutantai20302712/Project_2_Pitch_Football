@@ -155,4 +155,51 @@ class AdminController extends Controller
         DB::table('admins') ->delete($id);
         return Redirect::route('admin.index') ->with('msg','Delete Successfull');
     }
+
+    public function getDailyRevenue()
+    {
+        $dailyRevenue = DB::table('scheduling_froms')
+            ->join('scheduling_from_details', 'scheduling_froms.id', '=', 'scheduling_from_details.scheduling_form_id')
+            ->select(DB::raw('DATE(scheduling_form_date) as date'), DB::raw('SUM(price) as revenue'))
+            ->where('scheduling_form_status', 'Paid')
+            ->groupBy('date')
+            ->get();
+    
+        return response()->json($dailyRevenue);
+    }
+    
+
+    public function getMonthlyRevenue()
+    {
+        $monthlyRevenue = DB::table('scheduling_froms')
+            ->join('scheduling_from_details', 'scheduling_froms.id', '=', 'scheduling_from_details.scheduling_form_id')
+            ->select(DB::raw('YEAR(scheduling_form_date) as year'), DB::raw('MONTH(scheduling_form_date) as month'), DB::raw('SUM(price) as revenue'))
+            ->where('scheduling_form_status', 'Paid')
+            ->groupBy('year', 'month')
+            ->get();
+    
+        return response()->json($monthlyRevenue);
+    }
+    
+
+    public function getMostBookedPitches()
+    {
+        $mostBookedPitches = DB::table('scheduling_from_details')
+            ->join('scheduling_froms', 'scheduling_froms.id', '=', 'scheduling_from_details.scheduling_form_id')
+            ->join('pitches', 'scheduling_from_details.pitch_id', '=', 'pitches.id')
+            ->select('pitches.name', DB::raw('COUNT(*) as bookings'))
+            ->where('scheduling_froms.scheduling_form_status', 'Paid')
+            ->groupBy('pitches.name')
+            ->orderBy('bookings', 'DESC')
+            ->get();
+    
+        return response()->json($mostBookedPitches);
+    }
+    
+
+    public function showStatistics()
+    {
+        return view('Manager.Admin.statistical');
+    }
+
 }

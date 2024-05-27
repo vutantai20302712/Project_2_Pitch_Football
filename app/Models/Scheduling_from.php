@@ -11,4 +11,9 @@ class Scheduling_from extends Model
     protected $fillable = [
         'customer_id', 'scheduling_form_status', 'scheduling_form_date', 'payment_method', 'admin_id'
     ];
+
+    public function details()
+    {
+        return $this->hasMany(Scheduling_from::class, 'scheduling_form_id');
+    }
 }

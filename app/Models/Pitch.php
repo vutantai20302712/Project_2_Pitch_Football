@@ -11,5 +11,10 @@ class Pitch extends Model
     {
         return $this->belongsTo(Yard_category::class, 'yard_category');
     }
+
+    public function details()
+    {
+        return $this->hasMany(Scheduling_from_detail::class, 'pitch_id');
+    }
 }
 
