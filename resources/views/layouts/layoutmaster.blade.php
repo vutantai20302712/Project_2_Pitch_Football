@@ -19,19 +19,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>
-        Project Manage
-    </title>
-    <!--     Fonts and icons     -->
+    <title>Project Manage</title>
+    
+    <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <!-- Scripts -->
+
+    <!-- Vite resources -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @vite(['resources/css/app.css'])
 
@@ -42,7 +42,37 @@
     @vite(['assets/img/apple-icon.png'])
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show bg-gray-100">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/perfect-scrollbar/1.5.3/perfect-scrollbar.min.js"></script>
+
+    <!-- Smooth Scrollbar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.6.4/smooth-scrollbar.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Additional JS -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Vite resources -->
+    @vite(['assets/js/core/popper.min.js'])
+    @vite(['assets/js/core/bootstrap.min.js'])
+    @vite(['assets/js/plugins/perfect-scrollbar.min.js'])
+    @vite(['assets/js/plugins/smooth-scrollbar.min.js'])
+    @vite(['assets/js/plugins/fullcalendar.min.js'])
+    @vite(['assets/js/plugins/chartjs.min.js'])
+    @vite(['assets/js/plugins/choices.min.js'])
+    
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
         id="sidenav-main" style="background-color: black">
         <div class="sidenav-header">
@@ -280,6 +310,34 @@
                         <span class="nav-link-text ms-1">SCHEDULING FORM</span>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link {{ request()->routeIs('statistical.index') ? 'active' : '' }}"
+                        href="{{ route('statistical.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>credit-card</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
+                                        fill-rule="nonzero">
+                                        <g transform="translate(1716.000000, 291.000000)">
+                                            <g transform="translate(453.000000, 454.000000)">
+                                                <path class="color-background opacity-6"
+                                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z">
+                                                </path>
+                                                <path class="color-background"
+                                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="nav-link-text ms-1">STATISTICAL</span>
+                    </a>
+                </li>
             </ul>
         </div>
         </div>
@@ -387,6 +445,10 @@
                                 <a href="#" style="color: white">Edit</a>
                             </li>
                         @endif
+
+                        @if (Request::is('scheduling_form'))
+                             Statistical Manager
+                          @endif
                         </li>
                     </ol>
                 </nav>

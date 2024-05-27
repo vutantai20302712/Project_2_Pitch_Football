@@ -8,7 +8,7 @@
                     <div class="alert alert-success">{{Session::get('msg')}}</div>
                 @endif
                 <a href="{{route('yard_category.create')}}" class="btn btn-primary" ><strong>ADD NEW +</strong></a>
-                <table class="table">
+                <table class="table text-center">
                     <thead class="table-light">
                     <tr>
                         <th scope="col">ID</th>

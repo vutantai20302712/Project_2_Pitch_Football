@@ -24,6 +24,10 @@ class AdminController extends Controller
         return view('Manager.Admin.list') -> with('data',$data);
     }
 
+    public function statistical() {
+        return view('Manager.Admin.statistical');
+    }
+
     public function view_login_admin()
     {
         //

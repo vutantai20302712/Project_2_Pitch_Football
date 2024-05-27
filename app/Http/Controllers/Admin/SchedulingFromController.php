@@ -19,21 +19,28 @@ class SchedulingFromController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('scheduling_froms')
+        $query = DB::table('scheduling_froms')
             ->join('customers', 'scheduling_froms.customer_id', '=', 'customers.id')
             ->join('admins', 'scheduling_froms.admin_id', '=', 'admins.id')
             ->join('payments', 'scheduling_froms.payment_method', '=', 'payments.id')
-            ->select('scheduling_froms.*', 'customers.name as customer_name', 'customers.email', 'customers.phone_number as customer_phone_number', 'admins.name as admin_name', 'payments.payment_method as payment_method')
-            ->paginate(5); // Paginate 5 items per page
+            ->select('scheduling_froms.*', 'customers.name as customer_name', 'customers.email', 'customers.phone_number as customer_phone_number', 'admins.name as admin_name', 'payments.payment_method as payment_method');
+    
+        // Apply the status filter if it is set
+        if ($request->has('status') && !empty($request->status)) {
+            $query->where('scheduling_froms.scheduling_form_status', $request->status);
+        }
+    
+        $data = $query->paginate(5); // Paginate 5 items per page
         
         $customers = DB::table('customers')->get();
         $admins = DB::table('admins')->get();
-
+    
         // Retrieve cart items from the session
         return view('Manager.SchedulingForm.list', compact('data', 'customers', 'admins'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

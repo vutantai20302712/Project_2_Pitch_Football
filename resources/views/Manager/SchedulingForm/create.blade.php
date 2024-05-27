@@ -39,9 +39,10 @@
             <div class="mb-3">
                 <label for="exampleInputPassword1"><strong>Reservation Status</strong></label>
                 <select class="form-control" name="scheduling_form_status">
-                    <option value="confirmed">Unconfimred</option>
+                    <option value="unconfirmed">Unconfimred</option>
                     <option value="confirmed">Confirmed</option>
-                    <option value="paid">Paid</option>            
+                    <option value="paid">Paid</option>   
+                    <option value="cancelled">Cancelled</option>           
                 </select>
             </div>
             {{-- Thêm giỏ hàng --}}

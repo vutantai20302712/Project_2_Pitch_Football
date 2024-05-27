@@ -59,6 +59,9 @@ Route::middleware(['AuthenticateAdmin'])->group(function () {
     Route::delete('destroy-admin/{admin_id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::post('store-admin', [AdminController::class, 'store'])->name('admin.store');
 
+    // Statistical
+    Route::get('/statistical', [AdminController::class, 'statistical'])->name('statistical.index');
+
     // CUSTOMER MANAGER
     Route::get('/customer', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customer.index');
     Route::get('/customer/create', [\App\Http\Controllers\Admin\CustomerController::class, 'create'])->name('customer.create');
