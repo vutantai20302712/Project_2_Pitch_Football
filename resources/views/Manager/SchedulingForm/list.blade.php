@@ -30,7 +30,7 @@
                             <th>ADMIN MANAGER</th>
                             <th>STATUS</th>
                             <th>DATE</th>
-                            <th>PAYMENT STATUS</th>
+                            <th>PAYMENT METHOD</th>
                             <th scope="col" colspan="2">ACTION</th>
                         </tr>
                     </thead>
@@ -54,9 +54,9 @@
                                 <td>{{ $value->scheduling_form_date }}</td>
                                 <td>
                                     @if ($value->payment_method == 'Online')
-                                        <span class="badge badge-sm bg-gradient-success">Đã thanh toán</span>
+                                        <span class="badge badge-sm bg-gradient-success">Online</span>
                                     @else
-                                        <span class="badge badge-sm bg-gradient-danger">Chưa thanh toán</span>
+                                        <span class="badge badge-sm bg-gradient-danger">Offline</span>
                                     @endif
                                 </td>
                                 <td><a href="{{ route('scheduling_form.edit', $value->id) }}" class="btn btn-info">Edit</a></td>

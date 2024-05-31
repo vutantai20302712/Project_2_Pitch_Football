@@ -20,67 +20,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Project Manage</title>
-    
     <!-- Fonts and icons -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" /> --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-
     <!-- Vite resources -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @vite(['resources/css/app.css'])
-
     @vite(['assets/css/nucleo-svg.css'])
     @vite(['assets/css/soft-ui-dashboard.css?v=1.0.3'])
-    @vite(['assets/img/favicon.png'])
+    {{-- @vite(['assets/img/favicon.png']) --}}
     @vite(['assets/css/nucleo-icons.css'])
-    @vite(['assets/img/apple-icon.png'])
+    {{-- @vite(['assets/img/apple-icon.png']) --}}
 </head>
 
-<body class="g-sidenav-show bg-gray-100">
-    <!-- jQuery -->
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Popper.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Perfect Scrollbar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/perfect-scrollbar/1.5.3/perfect-scrollbar.min.js"></script>
-
-    <!-- Smooth Scrollbar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.6.4/smooth-scrollbar.js"></script>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Additional JS -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script> --}}
-
-    <!-- Vite resources -->
-    @vite(['assets/js/core/popper.min.js'])
-    @vite(['assets/js/core/bootstrap.min.js'])
-    @vite(['assets/js/plugins/perfect-scrollbar.min.js'])
-    @vite(['assets/js/plugins/smooth-scrollbar.min.js'])
-    @vite(['assets/js/plugins/fullcalendar.min.js'])
-    @vite(['assets/js/plugins/chartjs.min.js'])
-    @vite(['assets/js/plugins/choices.min.js'])
-    
+<body class="g-sidenav-show bg-gray-100">    
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
         id="sidenav-main" style="background-color: black">
-        <div class="sidenav-header">
+        <div class="sidenav-header text-center">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="{{ route('home_admin_new') }}" target="_blank">
-                <img src="{{ asset('img/logo.png') }}" class="navbar-brand-img h-200" alt="main_logo" width="150px"
-                    height="70px" style="background-color: black">
+                <img src="{{ asset('img/sport-mate.png') }}" class="navbar-brand-img h-200" alt="main_logo" width="100px"
+                    height="100px" style="background-color: black">
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -446,7 +411,7 @@
                             </li>
                         @endif
 
-                        @if (Request::is('scheduling_form'))
+                        @if (Request::is('statistics'))
                              Statistical Manager
                           @endif
                         </li>
@@ -483,209 +448,5 @@
             </div> --}}
         </div>
     </main>
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
-    <script>
-        var ctx = document.getElementById("chart-bars").getContext("2d");
-
-        new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Sales",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    borderRadius: 4,
-                    borderSkipped: false,
-                    backgroundColor: "#fff",
-                    data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
-                    maxBarThickness: 6
-                }, ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 500,
-                            beginAtZero: true,
-                            padding: 15,
-                            font: {
-                                size: 14,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                            color: "#fff"
-                        },
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false
-                        },
-                        ticks: {
-                            display: false
-                        },
-                    },
-                },
-            },
-        });
-
-
-        var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-        var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
-
-        gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
-
-        var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
-
-        gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-        gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-
-        new Chart(ctx2, {
-            type: "line",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                        label: "Mobile apps",
-                        tension: 0.4,
-                        borderWidth: 0,
-                        pointRadius: 0,
-                        borderColor: "#cb0c9f",
-                        borderWidth: 3,
-                        backgroundColor: gradientStroke1,
-                        fill: true,
-                        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                        maxBarThickness: 6
-
-                    },
-                    {
-                        label: "Websites",
-                        tension: 0.4,
-                        borderWidth: 0,
-                        pointRadius: 0,
-                        borderColor: "#3A416F",
-                        borderWidth: 3,
-                        backgroundColor: gradientStroke2,
-                        fill: true,
-                        data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-                        maxBarThickness: 6
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#b2b9bf',
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#b2b9bf',
-                            padding: 20,
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
-        });
-    </script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var navItems = document.querySelectorAll(".nav-item");
-            navItems.forEach(function(item) {
-                item.addEventListener("click", function() {
-                    navItems.forEach(function(navItem) {
-                        navItem.classList.remove("active");
-                    });
-                    this.classList.add("active");
-                });
-            });
-        });
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
-
 </html>
