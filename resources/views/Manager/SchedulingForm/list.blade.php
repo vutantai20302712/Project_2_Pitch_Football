@@ -15,6 +15,7 @@
                                     <option value="Unconfirmed">Unconfirmed</option>
                                     <option value="Confirmed">Confirmed</option>
                                     <option value="Paid">Paid</option>
+                                    <option value="Completed">Completed</option>
                                     <option value="Cancelled">Cancelled</option>
                                 </select>
                             </div>
@@ -45,6 +46,8 @@
                                         <span class="badge badge-sm bg-gradient-secondary">Unconfirmed</span>
                                     @elseif ($value->scheduling_form_status == 'Confirmed')
                                         <span class="badge badge-sm bg-gradient-primary">Confirmed</span>
+                                        @elseif ($value->scheduling_form_status == 'Completed')
+                                        <span class="badge badge-sm bg-gradient-light">Completed</span>
                                     @elseif ($value->scheduling_form_status == 'Paid')
                                         <span class="badge badge-sm bg-gradient-warning">Paid</span>
                                     @else

@@ -10,9 +10,13 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
+    protected $commands = [
+        Commands\UpdateOrderStatus::class,
+    ];
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Lên kế hoạch thực hiện lệnh cập nhật trạng thái đơn hàng hàng ngày vào lúc 00:00 AM
+        $schedule->command('scheduling_froms:update-status')->dailyAt('00:00');
     }
 
     /**
@@ -24,4 +28,6 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+    
+    
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePitchRequest;
 use App\Models\Pitch;
 use App\Models\Yard_category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class PitchController extends Controller
@@ -88,22 +89,30 @@ class PitchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePitchRequest $request, String $id)
-    {
-        //
-        if ($request->has('price')) {
-            DB::table('pitches')->where('id', $id)->update([
-                'name' => $request->name,
-                'price' => $request->price,
-                'description' => $request->description,
-                'image' => $request->image,
-                'address' => $request->address,
-                'yard_category' => $request->yard_category,
-            ]);
-        } else {
-        }
-        return Redirect::route('pitch.index')->with('msg', 'Update Successfull');
+    public function update(Request $request, $id)
+{
+    $pitch = Pitch::find($id);
+
+    $pitch->name = $request->name;
+    $pitch->price = $request->price;
+    $pitch->description = $request->description;
+    $pitch->yard_category = $request->yard_category;
+    $pitch->address = $request->address;
+
+    if ($request->hasFile('image')) {
+        // Save new image
+        $imagePath = $request->file('image')->store('public/img');
+        $pitch->image = basename($imagePath);
+    } else {
+        // Keep the current image
+        $pitch->image = $request->current_image;
     }
+
+    $pitch->save();
+
+    return redirect()->route('pitch.index')->with('msg', 'Pitch updated successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.
